@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.genstar</groupId>
+  <artifactId>genstar-gpl-gospl</artifactId>
+  <version>1.0.3</version>
+  
+  <!-- to access the genstar library -->
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>anrgenstar</id>
+      <name>anrgenstar</name>
+      <url>https://dl.bintray.com/anrgenstar/genstar-packages/</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+  
+  
+  <dependencies>
+ 
+  	<dependency>
+	  <groupId>org.genstar</groupId>
+	  <artifactId>genstar-core</artifactId>
+	  <version>1.0.3</version>
+	</dependency>
+ 
+  	<dependency>
+	  <groupId>org.genstar</groupId>
+	  <artifactId>genstar-gospl</artifactId>
+	  <version>1.0.3</version>
+	</dependency>
+	
+  </dependencies>
+  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Export-Package>gospl.*</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>bintray-anrgenstar-genstar-packages</id>
+			<name>anrgenstar-genstar-packages</name>
+			<url>https://api.bintray.com/maven/anrgenstar/genstar-packages/genstar-gospl/;publish=1;override=1</url>
+		</repository>
+	</distributionManagement>
+
+  
+  
+</project>
